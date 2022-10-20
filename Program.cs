@@ -34,10 +34,6 @@ namespace PracticalWork_IV
                     case ConsoleKey.DownArrow:
                         DiaryMenu.ChangePosition(arrow);
                         break;
-                    default:
-                        Console.Clear();
-                        Console.WriteLine("Ошибка");
-                        break;
                 }
                 if (arrow.Key == ConsoleKey.Escape) Environment.Exit(0);
             }

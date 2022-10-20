@@ -21,8 +21,10 @@ namespace PracticalWork_IV
 
         public static List<string> description = new List<string>()
             { "Купить картоху и капусту", "Почефирить", };
+
         public static List<string> description2 = new List<string>()
             { "Практику и отчет", "Съездить в драгхаус" };
+
         public static List<string> description3 = new List<string>()
             { "Поесть и поспать", "Заглянуть на маросейку" };
         private static int page;
@@ -159,30 +161,33 @@ namespace PracticalWork_IV
             }
         }
 
-        public static void ChangePosition(ConsoleKeyInfo strelka, int maxDown = 2, string arrow = "->")
+        public static void ChangePosition(ConsoleKeyInfo strelka, int maxDown = 2, string empty = "\0\0")
         {
-            string empty = new string(' ', arrow.Length);
             int i = position;
             Console.SetCursorPosition(0, position);
-            Console.Write(arrow);
+            Console.Write("->");
             while (strelka.Key != ConsoleKey.Enter)
             {
                 strelka = Console.ReadKey(true);
                 switch (strelka.Key)
                 {
                     case ConsoleKey.DownArrow:
-                        if (i == maxDown + position - 1) continue;
-                        Console.SetCursorPosition(0, i);
-                        Console.Write(empty);
-                        Console.SetCursorPosition(0, ++i);
-                        Console.Write(arrow);
+                        if (i != maxDown + position - 1)
+                        {
+                            Console.SetCursorPosition(0, i);
+                            Console.Write(empty);
+                            Console.SetCursorPosition(0, ++i);
+                            Console.Write("->");
+                        }
                         break;
                     case ConsoleKey.UpArrow:
-                        if (i == position) continue;
-                        Console.SetCursorPosition(0, i);
-                        Console.Write(empty);
-                        Console.SetCursorPosition(0, --i);
-                        Console.Write(arrow);
+                        if (i != position)
+                        {
+                            Console.SetCursorPosition(0, i);
+                            Console.Write(empty);
+                            Console.SetCursorPosition(0, --i);
+                            Console.Write("->");
+                        }
                         break;
                     case ConsoleKey.RightArrow:
                         Menu(strelka);
